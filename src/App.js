@@ -17,7 +17,7 @@ function App() {
   const toDoNodes = toDo.map((toDo, index) => {
     
     return (
-      <li key={index} className={toDo.priority ? "high" : "low"}>
+      <li key={index} className={toDo.priority === "high" ? "high" : "low"}>
         <span>{toDo.name} {toDo.priority}</span>
       </li>
     )
@@ -44,7 +44,7 @@ function App() {
   <form onSubmit={saveNewToDo}>
     <label htmlFor="new-todo">Add to do</label>
     <input type="text" id="new-to-do" value={newToDo} onChange={handleInputChange}></input>
-    <div onChange={handleInputChange2}>
+    <div>
       <input type="radio" name="priority" value="high" /> High
       <input type="radio" name="priority" value="low" /> Low
     </div>
