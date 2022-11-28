@@ -12,13 +12,14 @@ function App() {
 
   const[newToDo, setNewToDo] = useState("");
 
-  const [currentPriority, setNewCurrentPriority] = useState("");
+  // const [currentPriority, setNewCurrentPriority] = useState("");
 
   const toDoNodes = toDo.map((toDo, index) => {
     
     return (
       <li key={index} className={toDo.priority === "high" ? "high" : "low"}>
-        <span>{toDo.name} {toDo.priority}</span>
+        <span>{toDo.name}</span>
+        {toDo.priority === "low" ? <span className="low">low</span> : <button onClick={ () => changePriority(index)}>High</button>}
       </li>
     )
 
@@ -37,6 +38,12 @@ function App() {
     setNewToDo(event.target.value)
   }
   
+  const changePriority = (index) => {
+    const newToDoArr = [...toDo];
+    newToDoArr[index].priority = true;
+    setNewToDo(newToDoArr)
+  }
+
   return (
  <div className="App">
  <h1>To Do list</h1>
